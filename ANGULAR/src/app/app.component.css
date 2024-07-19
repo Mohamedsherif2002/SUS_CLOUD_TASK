@@ -1,0 +1,17 @@
+.order-form {
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .form-field {
+    margin-bottom: 20px;
+  }
+  
+  .order-detail {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,50 @@
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="order-form">
+  <!-- Order Date -->
+  <div class="form-group">
+    <label for="orderDate">Order Date:</label>
+    <input id="orderDate" formControlName="orderDate" type="date" class="form-control">
+  </div>
+
+  <!-- Customer Name -->
+  <div class="form-group">
+    <label for="customerName">Customer Name:</label>
+    <input id="customerName" formControlName="customerName" type="text" class="form-control">
+  </div>
+
+  <!-- Order Items -->
+  <fieldset class="order-items">
+    <legend>Order Items</legend>
+    <div formArrayName="orderDetails">
+      <div *ngFor="let orderDetail of orderDetails.controls; let i = index" [formGroupName]="i" class="order-detail-group">
+        <div class="form-row">
+          <label for="productName-{{i}}">Product Name:</label>
+          <input id="productName-{{i}}" formControlName="productName" type="text" class="form-control">
+        </div>
+
+        <div class="form-row">
+          <label for="quantity-{{i}}">Quantity:</label>
+          <input id="quantity-{{i}}" formControlName="quantity" type="number" class="form-control">
+        </div>
+
+        <div class="form-row">
+          <label for="unitPrice-{{i}}">Unit Price:</label>
+          <input id="unitPrice-{{i}}" formControlName="unitPrice" type="number" class="form-control">
+        </div>
+
+        <button type="button" (click)="removeOrderDetail(i)" class="btn btn-danger">Remove</button>
+      </div>
+    </div>
+    <button type="button" (click)="addOrderDetail()" class="btn btn-primary">Add Order Item</button>
+  </fieldset>
+
+    <!-- Total Amount -->
+  <div class="form-group">
+    <label for="totalAmount">Total Amount:</label>
+    <input id="totalAmount" formControlName="totalAmount" type="number" class="form-control" readonly>
+  </div>
+  
+  <!-- Form Actions -->
+  <div class="form-actions">
+    <button type="submit" class="btn btn-success">Save Order</button>
+  </div>
+</form>
